@@ -13,7 +13,7 @@ const WorkedWith = () => {
   return (
     <Container>
       <h3 className="text-primary text-center my-5">We've worked with</h3>
-      <Row>
+      <Row className="text-center">
         <Col>
           <img src={airbnb} alt="airbnb" />
         </Col>

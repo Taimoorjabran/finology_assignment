@@ -2,19 +2,29 @@ import backgroundImage1 from '../assets/2-banner/banner-rounded-001.svg';
 import backgroundImage2 from '../assets/2-banner/banner-rounded-002.svg';
 import footerBG1 from '../assets/6-footer/footer-rounded-001.svg';
 import footerBG2 from '../assets/6-footer/footer-rounded-002.svg';
+import mobileBackground from '../assets/8-mobile/mobile-rounded-001.svg';
 
 export const styles = {
   // header
 
   headerContMain: { backgroundColor: '#2d2788' },
+  mobileNavColor: { color: 'white' },
   headerCont1: { height: 300, margin: 0 },
+  headerContresposive: { height: 100, margin: 0 },
   background1Col: {
     height: 300,
     backgroundImage: `url(${backgroundImage1})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '45% 115%',
+    backgroundSize: '45% 111%',
+  },
+  background1ColResponsive: {
+    height: 100,
+    backgroundImage: `url(${mobileBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '81% 256%',
   },
   marginLeft110PX: { marginLeft: 110 },
+  marginLeft0PX: { marginLeft: 0 },
   marginTop37: { marginTop: 37 },
   background2Col: {
     height: 300,
@@ -45,16 +55,16 @@ export const styles = {
     boxShadow: '#f58c8c 1px 3px 6px 0px',
   },
   heartIconImg: { fill: '#ea825a', width: 14, verticalAlign: 'sub' },
-  Col2Div1: {
-    height: 30,
-    width: 30,
+  col2Div1: {
+    height: 25,
+    width: 25,
     backgroundColor: '#e0d9ff',
     borderRadius: 15,
     textAlign: 'center',
   },
   forwardArrowImg: {
-    width: 15,
-    verticalAlign: 'text-bottom',
+    width: 12,
+    verticalAlign: 'middle',
   },
 
   //   about carouse
@@ -62,6 +72,7 @@ export const styles = {
   carouselCard: {
     boxShadow: '#dedadbf2 0px 5px 4px 0px',
     borderBottom: 'inset',
+    // height: 200,
   },
 
   carouselCardImg: {
@@ -74,13 +85,17 @@ export const styles = {
 
   // important person List
 
-  importantPersonListCol1: {
+  importantPersonCol1Div1Div1: {
     height: 30,
     width: 30,
     borderRadius: 15,
     backgroundColor: '#fd00c6',
     textAlign: 'center',
-    boxShadow: '#f58ce3 1px 3px 6px 0px',
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%,-50%)',
+    boxShadow: '#f58c8c 1px 3px 6px 0px',
   },
 
   importantPersonListCol1Img: { width: 15, margin: 3 },
@@ -100,6 +115,17 @@ export const styles = {
     paddingLeft: 20,
     paddingRight: 20,
   },
+  importantPersonListCol2CancleBtn: { background: 'none', border: 'none' },
+
+  deleteIconCont: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: '#ffb9b994',
+    textAlign: 'center',
+  },
+  deleteIcon: { width: 13 },
+
   importantPersonListCardCont: {
     float: 'none',
     marginLeft: 'auto',
@@ -114,13 +140,24 @@ export const styles = {
     height: 15,
     borderRadius: 10,
     border: '1px solid grey',
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
     marginTop: 10,
     marginLeft: 10,
     zIndex: 1,
     marginBottom: -25,
   },
-  importantPersonListCardSelectIcon: { width: 10, marginBottom: 15, margin: 1 },
+  onSelectBackgroundColor: {
+    backgroundColor: '#3734f5',
+    width: 15,
+    height: 15,
+    borderRadius: 10,
+  },
+  importantPersonListCardSelectIcon: {
+    width: 10,
+    marginBottom: 15,
+    margin: 1,
+    verticalAlign: 'super',
+  },
   importantPersonListCardEditCont: {
     width: 20,
     height: 20,
@@ -174,7 +211,7 @@ export const styles = {
   importantPeopleModalDeleteImgCont: {
     width: 20,
     height: 20,
-    backgroundColor: 'red',
+    backgroundColor: '#ffb9b994',
     borderRadius: 10,
     textAlign: 'center',
   },
@@ -194,11 +231,13 @@ export const styles = {
   },
 
   mapCont: { height: '70vh', width: '100%' },
+  mapContMedium: { height: '50vh', width: '100%' },
 
   // footer
 
   footerRow: { backgroundColor: '#2d2788', height: 160 },
-
+  footerRowMedium: { backgroundColor: '#2d2788', height: 185 },
+  footerRowSmall: { backgroundColor: '#2d2788' },
   footerBackground1: {
     backgroundImage: `url(${footerBG1})`,
     backgroundRepeat: 'no-repeat',

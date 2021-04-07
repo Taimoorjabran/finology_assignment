@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
+import { Breakpoint } from 'react-socks';
+import { styles } from '../styles/styles';
 import Map from './Map';
 
 const ContactUs = () => {
@@ -7,7 +9,7 @@ const ContactUs = () => {
     <>
       <h3 className="text-primary text-center my-5">Contact Us</h3>
       <Row className="align-items-center justify-content-center m-0">
-        <Col xs={12} md={5} className="my-5 pr-0">
+        <Col xs={11} md={5} className="my-5 pr-0">
           <Card>
             <Form className="m-5 ">
               <Form.Group controlId="name">
@@ -46,8 +48,13 @@ const ContactUs = () => {
             </Form>
           </Card>
         </Col>
-        <Col xs={12} md={5} className="pl-0">
-          <Map />
+        <Col xs={11} md={5} className="pl-0">
+          <Breakpoint large up>
+            <Map mapCont={styles.mapCont} />
+          </Breakpoint>
+          <Breakpoint medium down>
+            <Map mapCont={styles.mapContMedium} />
+          </Breakpoint>
         </Col>
       </Row>
     </>

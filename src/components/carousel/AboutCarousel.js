@@ -108,14 +108,14 @@ const AboutCarousel = forwardRef((props, ref) => {
               <div key={index}>
                 <Card className="mx-3 p-2" style={styles.carouselCard}>
                   <Row>
-                    <Col xs={2}>
+                    <Col xs={4} sm={4} md={3}>
                       <img
                         src={item.img}
                         alt={item.name}
                         style={styles.carouselCardImg}
                       />
                     </Col>
-                    <Col xs={5}>
+                    <Col xs={8} sm={8} md={9}>
                       <h6>{item.name}</h6>
                       <p>{item.position}</p>
                     </Col>

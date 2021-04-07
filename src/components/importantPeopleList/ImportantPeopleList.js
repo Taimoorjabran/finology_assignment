@@ -7,10 +7,12 @@ import selectIcon from '../../assets/7-icons/checked.svg';
 import pencilIcon from '../../assets/7-icons/pencil.svg';
 import { importantPersonData } from '../../data/importantPesonData';
 import { styles } from '../../styles/styles';
+import VIewImportantPersonModal from '../modals/VIewImportantPersonModal';
 
 const ImportantPeopleList = () => {
   const [showAddPeopleModal, setShowAddPeopleModal] = useState(false);
   const [showEditPeopleModal, setShowEditPeopleModal] = useState(false);
+  const [showViewPeopleModal, setShowViewPeopleModal] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [enableEdit, setEnableEdit] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -31,7 +33,7 @@ const ImportantPeopleList = () => {
   const handleSelected = (index) => {
     let data = [...importantPersonList];
     data[index].isSelected = !data[index].isSelected;
-    setSelectedIndex(index);
+    setImportantPersonList(data);
   };
 
   const handleSubmit = (data) => {
@@ -52,48 +54,63 @@ const ImportantPeopleList = () => {
   return (
     <>
       <Row className="d-flex justify-content-between mx-5">
-        <Col sm={6} className="d-flex align-items-center">
-          <div style={styles.importantPersonListCol1}>
-            <HappyFace fill="white" style={styles.importantPersonListCol1Img} />
+        <Col xs={12} sm={6} className="d-flex align-items-center">
+          <div style={styles.peopleAboutUsCol1Div1}>
+            <div style={styles.importantPersonCol1Div1Div1}>
+              <HappyFace
+                fill="white"
+                style={styles.importantPersonListCol1Img}
+              />
+            </div>
           </div>
-          <h2 className="text-primary ml-3">
+          <h3 className="text-primary ml-3">
             Our important people are listed <br /> here
-          </h2>
+          </h3>
         </Col>
 
-        <Col sm={6} className="d-flex align-items-center justify-content-end">
+        <Col
+          xs={12}
+          sm={6}
+          className="d-flex align-items-center justify-content-end"
+        >
           {enableEdit ? (
             <>
-              <Button
-                variant="light"
+              <button
                 style={styles.importantPersonListCol2CancleBtn}
-                onClick={() => setEnableEdit(!enableEdit)}
+                onClick={() => {
+                  setEnableEdit(false);
+                  setShowViewPeopleModal(false);
+                }}
               >
                 Cancle
-              </Button>
-              <img
-                className="ml-3"
-                src={deleteIcon}
-                alt=""
-                onClick={() => {
-                  const newImportant = importantPersonList.filter((item) => {
-                    return item.isSelected === false;
-                  });
-                  localStorage.setItem(
-                    'importantPeson',
-                    JSON.stringify(newImportant)
-                  );
-                  setImportantPersonList(newImportant);
-                  setSelectedIndex(null);
-                }}
-              />
+              </button>
+              <div className="ml-3" style={styles.deleteIconCont}>
+                <img
+                  src={deleteIcon}
+                  alt="delete-icon"
+                  style={styles.deleteIcon}
+                  onClick={() => {
+                    const newImportant = importantPersonList.filter((item) => {
+                      return item.isSelected === false;
+                    });
+                    localStorage.setItem(
+                      'importantPeson',
+                      JSON.stringify(newImportant)
+                    );
+                    setImportantPersonList(newImportant);
+                    setSelectedIndex(null);
+                    setEnableEdit(false);
+                    setShowViewPeopleModal(false);
+                  }}
+                />
+              </div>
             </>
           ) : (
             <>
               <Button
                 variant="light"
                 style={styles.importantPersonListCol2EditBtn}
-                onClick={() => setEnableEdit(!enableEdit)}
+                onClick={() => setEnableEdit(true)}
               >
                 Eidt
               </Button>
@@ -121,6 +138,9 @@ const ImportantPeopleList = () => {
                 <Card
                   className="text-center my-3 "
                   style={styles.importantPersonListCard}
+                  onClick={() => {
+                    setShowViewPeopleModal(true);
+                  }}
                   onMouseEnter={() => {
                     if (enableEdit === false) {
                       setEditMode(true);
@@ -130,7 +150,6 @@ const ImportantPeopleList = () => {
                   onMouseLeave={() => {
                     if (enableEdit === false) {
                       setEditMode(false);
-                      // setSelectedIndex('');
                     }
                   }}
                 >
@@ -139,21 +158,25 @@ const ImportantPeopleList = () => {
                       style={styles.importantPersonListCardSelectCircle}
                       onClick={() => handleSelected(index)}
                     >
-                      <img
-                        src={selectIcon}
-                        alt="select-icon"
-                        style={{
-                          ...styles.importantPersonListCardSelectIcon,
-                          display: item.isSelected ? 'block' : 'none',
-                        }}
-                      />
+                      {item && item.isSelected && (
+                        <div style={styles.onSelectBackgroundColor}>
+                          <img
+                            src={selectIcon}
+                            alt="select-icon"
+                            style={styles.importantPersonListCardSelectIcon}
+                          />
+                        </div>
+                      )}
                     </div>
                   )}
 
                   {editMode && selectedIndex === index && enableEdit === false && (
                     <div
                       style={styles.importantPersonListCardEditCont}
-                      onClick={() => handleCurrentPerson(index)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleCurrentPerson(index);
+                      }}
                     >
                       <img
                         src={pencilIcon}
@@ -197,6 +220,19 @@ const ImportantPeopleList = () => {
           onHide={() => setShowEditPeopleModal(false)}
         />
       )}
+      {showViewPeopleModal &&
+        showEditPeopleModal === false &&
+        showAddPeopleModal === false &&
+        enableEdit === false && (
+          <VIewImportantPersonModal
+            show={showViewPeopleModal}
+            data={importantPersonList}
+            indexcurrent={selectedIndex}
+            onHide={() => {
+              setShowViewPeopleModal(false);
+            }}
+          />
+        )}
     </>
   );
 };

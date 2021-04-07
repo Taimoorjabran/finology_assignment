@@ -14,42 +14,48 @@ export const importantPersonData = [
     name: 'Darlene Chabrat',
     position: 'CEO',
     isSelected: false,
-    description: '',
+    description:
+      'I just wanted to share a quick note and let you know that you guys do a really good job.',
   },
   {
     pic: davidCampion,
     name: 'David Campion',
     position: 'CTO',
     isSelected: false,
-    description: '',
+    description:
+      'I just wanted to share a quick note and let you know that you guys do a really good job.',
   },
   {
     pic: jeromeBoudot,
     name: 'Jerome Boudot',
     position: 'Product Manager',
     isSelected: false,
-    description: '',
+    description:
+      'I just wanted to share a quick note and let you know that you guys do a really good job.',
   },
   {
     pic: jeromeMahuet,
     name: 'Jerome Mahuet',
     position: 'Marketing Head',
     isSelected: false,
-    description: '',
+    description:
+      'I just wanted to share a quick note and let you know that you guys do a really good job.',
   },
   {
     pic: manuelaFaveri,
     name: 'Manuela Faveri',
     position: 'Backend Developer',
     isSelected: false,
-    description: '',
+    description:
+      'I just wanted to share a quick note and let you know that you guys do a really good job.',
   },
   {
     pic: nicolasLebarreau,
     name: 'Nicolas Lebarreau',
     position: 'HR',
     isSelected: false,
-    description: '',
+    description:
+      'I just wanted to share a quick note and let you know that you guys do a really good job.',
   },
   {
     pic: romaneRegad,
@@ -62,7 +68,8 @@ export const importantPersonData = [
     name: 'TaniaFerreira',
     position: 'Jr UI/UX Developer',
     isSelected: false,
-    description: '',
+    description:
+      'I just wanted to share a quick note and let you know that you guys do a really good job.',
   },
   {
     pic: vincentJoignie,

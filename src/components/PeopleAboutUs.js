@@ -14,7 +14,7 @@ const PeopleAboutUs = () => {
   return (
     <>
       <Row className="align-items-center  justify-content-between m-1">
-        <Col sm={6} className="d-flex align-items-center ml-4">
+        <Col xs={9} sm={6} className="d-flex align-items-center ml-4">
           <div style={styles.peopleAboutUsCol1Div1}>
             <div style={styles.peopleAboutUsCol1Div1Div1}>
               <img src={heartIcon} alt="heart" style={styles.heartIconImg} />
@@ -25,7 +25,7 @@ const PeopleAboutUs = () => {
             <br /> our services
           </h3>
         </Col>
-        <Col sm={3}>
+        <Col xs={2} sm={3}>
           <div style={styles.col2Div1} onClick={next}>
             <img src={arrowForward} alt="" style={styles.forwardArrowImg} />
           </div>

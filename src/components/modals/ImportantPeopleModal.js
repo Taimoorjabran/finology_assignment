@@ -8,13 +8,18 @@ import { styles } from '../../styles/styles';
 const ImportantPeopleModal = (props) => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [previewPhoto, setPreviewPhoto] = useState(null);
+  const [error, setError] = useState(false);
   const [name, setName] = useState('');
   const [position, setPosition] = useState('');
   const [description, setDescription] = useState('');
   const fileInput = useRef(null);
 
   useEffect(() => {
-    if (props.indexcurrent && props.data) {
+    if (
+      props.indexcurrent !== null &&
+      props.data &&
+      props.title === 'Edit People'
+    ) {
       const listData = props.data;
       const currentPerson = listData[props.indexcurrent];
       setSelectedPhoto(currentPerson && currentPerson.pic);
@@ -40,6 +45,7 @@ const ImportantPeopleModal = (props) => {
       description,
     };
     props.submitform(formData);
+    setSelectedPhoto(null);
   };
 
   const handleFormSubmit = (e) => {
@@ -118,7 +124,7 @@ const ImportantPeopleModal = (props) => {
             )}
           </div>
           <div>
-            {props.edit === 'true' && (
+            {props.edit === 'true' && selectedPhoto && (
               <div
                 className="d-flex align-items-start justify-content-center my-2"
                 onClick={() => handleDeletePhoto(props.data)}
@@ -143,6 +149,7 @@ const ImportantPeopleModal = (props) => {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
+            {error && <p className="text-danger">please enter name</p>}
           </Form.Group>
           <Form.Group controlId="formBasicPosition">
             <Form.Label>Position</Form.Label>
@@ -172,8 +179,12 @@ const ImportantPeopleModal = (props) => {
               type="button"
               className="ml-3"
               onClick={(e) => {
-                props.onHide(false);
-                handleFormSubmit(e);
+                if (name === '') {
+                  setError(true);
+                } else {
+                  props.onHide(false);
+                  handleFormSubmit(e);
+                }
               }}
             >
               Save

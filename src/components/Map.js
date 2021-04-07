@@ -18,7 +18,7 @@ class Map extends Component {
 
   render() {
     return (
-      <div style={styles.mapCont}>
+      <div style={this.props.mapCont}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: API_KEY }}
           defaultCenter={this.props.center}

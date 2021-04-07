@@ -6,7 +6,7 @@ const EasyAccess = () => {
   return (
     <>
       <Row className="align-items-center justify-content-center m-0">
-        <Col sm={12} md={4}>
+        <Col xs={11} md={9} lg={4}>
           <h3 className="text-primary">
             Easy access.
             <br />
@@ -23,7 +23,7 @@ const EasyAccess = () => {
             remaining essentially unchanged.
           </p>
         </Col>
-        <Col sm={12} md={5}>
+        <Col md={12} lg={5}>
           <img src={content2} alt="content-2" width="100%" />
         </Col>
       </Row>

@@ -5,11 +5,12 @@ import Content1 from '../assets/3-content/content-001.png';
 const UserExperience = () => {
   return (
     <>
-      <Row className="align-items-center justify-content-center m-0">
-        <Col sm={12} md={5}>
+      <Row className="align-items-center justify-content-center m-0 mt-lg-5">
+        <Col md={12} lg={5}>
           <img src={Content1} alt="content-1" width="100%" />
         </Col>
-        <Col sm={12} md={4}>
+
+        <Col xs={11} md={9} lg={4}>
           <h3 className="text-primary">
             We can give you our
             <br /> best user experience
